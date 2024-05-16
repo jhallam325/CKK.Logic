@@ -21,7 +21,7 @@ namespace CKK.tests
 
             shoppingCart.AddProduct(product1);
             shoppingCart.AddProduct(product2, quantity2);
-
+            //added a comment
             // Test the constructor with no quantity parameter
             Assert.Equal(quantity1, shoppingCart.GetProduct(1).GetQuantity());
 
