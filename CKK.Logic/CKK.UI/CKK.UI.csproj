@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\cubicles.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CKK.Logic\CKK.Logic.csproj" />
+    <ProjectReference Include="..\CKK.Persistance\CKK.Persistance.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\cubicles.jpg" />
+  </ItemGroup>
+
+</Project>
