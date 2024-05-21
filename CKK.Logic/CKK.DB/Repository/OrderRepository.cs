@@ -26,7 +26,7 @@ namespace CKK.DB.Repository
         private readonly IConnectionFactory connectionFactory;
         public OrderRepository(IConnectionFactory connection)
         {
-            Connection = connection;
+            connectionFactory = connection;
         }
 
         public IConnectionFactory Connection { get; }
@@ -36,8 +36,8 @@ namespace CKK.DB.Repository
             // We need to insert data into the Orders database table
 
             // This is my SQL Query
-            string SQLQuery = "INSERT INTO Orders (OrderNumber, CustomerId, ShoppingCartId)" +
-                " VALUES (@OrderNumber, @CustomerId, @ShoppingCartId)";
+            string SQLQuery = "INSERT INTO Orders (OrderId, OrderNumber, CustomerId, ShoppingCartId)" +
+                " VALUES (@OrderId, @OrderNumber, @CustomerId, @ShoppingCartId)";
             /*
             string SQLQuery = $"INSERT INTO Order (OrderNumber, CustomerId, ShoppingCartId)" +
                 $"VALUES ('{entity.OrderNumber}', {entity.CustomerId}, {entity.ShoppingCartId})";
