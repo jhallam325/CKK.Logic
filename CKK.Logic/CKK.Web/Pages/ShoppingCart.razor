@@ -1,0 +1,47 @@
+﻿@page "/shoppingcart"
+
+@using CKK.Logic.Models
+@using CKK.DB.UOW
+@using CKK.DB.Interfaces
+
+@inject NavigationManager NavManager
+
+@if (uow == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="text-center">
+        <h1 class="display-4">Shopping Cart!</h1>
+    </div>
+}
+
+<h3>ShoppingCart</h3>
+
+@code {
+    private Order order = null;
+
+    [Inject]
+    private IUnitOfWork uow { get; set; } = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (uow != null)
+        {
+            order = uow.Orders.GetById(1);
+            // If no order was found, make a new order
+            if (order == null)
+            {
+                Order newOrder = new Order() 
+                    { OrderId = 1,
+                    OrderNumber = "1",
+                    CustomerId = 1, 
+                    ShoppingCartId = 100 };
+                order = newOrder;
+                uow.Orders.Add(newOrder);
+            }
+        }
+    }
+
+}

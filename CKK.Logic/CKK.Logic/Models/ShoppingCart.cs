@@ -144,5 +144,10 @@ namespace CKK.Logic.Models
             return ShCartItems;
 
         }
+
+        public ShoppingCartItem? AddProduct(ShoppingCartItem product, int quantity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

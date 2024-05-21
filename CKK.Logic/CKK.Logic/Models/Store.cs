@@ -9,7 +9,9 @@ namespace CKK.Logic.Models
 {
     public class Store : Entity, IStore
     {
+        /*
         public List<StoreItem> StoreItems {get;set;}
+        */
 
         /*
          * AddStoreItem(Product prod)
@@ -37,6 +39,8 @@ namespace CKK.Logic.Models
            3.  and I guess return the item just created or updated?
 
         */
+
+        /*
         public StoreItem? AddStoreItem(Product product, int quantity)
         {
             if(quantity <= 0 || product == null)
@@ -68,6 +72,8 @@ namespace CKK.Logic.Models
             StoreItems.Add(newItem);
             return newItem;
         }
+        */
+
         /*
          * RemoveStoreItem(int productNumber)
          * Removes a product from  the desired product
@@ -84,6 +90,8 @@ namespace CKK.Logic.Models
          *    	3. otherwise set the qty to 0
          *    
          */
+
+        /*
         public StoreItem? RemoveStoreItem(int id, int quantity)
         {
             StoreItem? oldItem = FindStoreItemById(id);
@@ -114,6 +122,7 @@ namespace CKK.Logic.Models
                 return null;
             }
         }
+        */
         /*
          * GetStoreItem(int productNumber)
          * This is different from the FindById. This method gets the product by its position (product1, product2, or product3).
@@ -121,10 +130,15 @@ namespace CKK.Logic.Models
          * If it is an invalid productNumber, then it will return null
          * If there is not an item in the desired spot, it will return null
         */
+
+        /*
         public List<StoreItem>? GetStoreItems()
         {
             return StoreItems;
         }
+        */
+
+
         /*
          * FindStoreItemById(int id) 
          * This will return the product that has the same Id (if there is one)
@@ -136,6 +150,8 @@ namespace CKK.Logic.Models
          * So, for every item in the StoreItem<> list, we can check the product id 
          * and return that product.
         */
+
+        /*
         public StoreItem? FindStoreItemById(int id)
         {
             foreach (StoreItem item in StoreItems)
@@ -148,5 +164,6 @@ namespace CKK.Logic.Models
             return null;
             
         }
+        */
     }
 }

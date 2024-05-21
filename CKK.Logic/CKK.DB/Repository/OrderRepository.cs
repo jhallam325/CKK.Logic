@@ -102,11 +102,21 @@ namespace CKK.DB.Repository
             }
         }
 
+        public Order GetById(int id)
+        {
+            string sql = $"SELECT * FROM Orders WHERE OrderId = {id}";
+            using (var connection = connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.QuerySingleOrDefault<Order>(sql);
+                return result;
+            }
+        }
+
         public List<Order> GetAll()
         {
             IDbConnection connection = connectionFactory.GetConnection;
             string SQLQuery = "SELECT * FROM Orders";
-
             using (connection)
             {
                 connection.Open();
@@ -114,7 +124,7 @@ namespace CKK.DB.Repository
                 return ordersList;
             }
         }
-
+        
         public Order GetOrderByCustomerId(int customerId)
         {
             IDbConnection connection = connectionFactory.GetConnection;
