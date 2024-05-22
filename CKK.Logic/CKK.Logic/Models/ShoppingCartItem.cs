@@ -44,6 +44,11 @@ namespace CKK.Logic.Models
             Quantity = quantity;
         }
 
+        public ShoppingCartItem()
+        {
+            
+        }
+
         public decimal GetTotal()
         {
             return Quantity * Product.Price;

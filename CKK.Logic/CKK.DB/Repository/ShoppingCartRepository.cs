@@ -20,7 +20,7 @@ namespace CKK.DB.Repository
         private readonly IConnectionFactory connectionFactory;
         public ShoppingCartRepository(IConnectionFactory connection)
         {
-            Connection = connection;
+            connectionFactory = connection;
         }
 
         public IConnectionFactory Connection { get; }
@@ -38,27 +38,22 @@ namespace CKK.DB.Repository
             }
         }
 
-        public ShoppingCartItem AddToCart(int ShoppingCartId, int ProdictId, int quantity)
-        {
-            throw new NotImplementedException();
-        }
-
-        /*
-         * Commented out for testing
-        public ShoppingCartItem AddToCart(int ShoppingCardId, int ProductId, int quantity)
+        // This AddToCart method does not work because the Async methods aren't implimented
+        public ShoppingCartItem AddToCart(int shoppingCardId, int productId, int quantity)
         {
             using (var conn = connectionFactory.GetConnection)
             {
                 ProductRepository productRepository = new ProductRepository(connectionFactory);
-                var item = productRepository.GetByIdAsync(ProductId).Result;
+                //var item = productRepository.GetByIdAsync(productId).Result;
+                Product item = productRepository.Get(productId);
 
                 // ShoppingCartItem
-                var ProductItems = GetProducts(ShoppingCardId).Find(x => x.ProductId == ProductId);
+                var ProductItems = GetProducts(shoppingCardId).Find(x => x.ProductId == productId);
 
                 var shopitem = new ShoppingCartItem()
                 {
-                    ShoppingCartId = ShoppingCardId,
-                    ProductId = ProductId,
+                    ShoppingCartId = shoppingCardId,
+                    ProductId = productId,
                     Quantity = quantity
                 };
 
@@ -78,7 +73,7 @@ namespace CKK.DB.Repository
                 return shopitem;
             }
         }
-        */
+        
 
         private object AddAsync(ShoppingCartItem shopitem)
         {

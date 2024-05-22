@@ -20,7 +20,7 @@ namespace CKK.DB.Repository
         private readonly IConnectionFactory connectionFactory;
         public ProductRepository(IConnectionFactory connection)
         {
-            Connection = connection;
+            connectionFactory = connection;
         }
 
         public IConnectionFactory Connection { get; }

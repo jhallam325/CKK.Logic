@@ -66,4 +66,39 @@ else
         }
     }
 
+    protected void spinnerChange(int productId, object value)
+    {
+        // Add to cart
+        var Item = uow.ShoppingCarts.AddToCart(order.ShoppingCartId, productId, Convert.ToInt16(value));
+        UpdateTotal();
+    }
+
+    private void UpdateTotal()
+    {
+        var total = uow.ShoppingCarts.GetTotal(order.ShoppingCartId).ToString("c");
+        checkoutTotal = "Check Out - " + total;
+    }
+
+    string checkoutTotal = "Check Out - .00";
+
+    protected void CheckOut()
+    {
+        // Get order info
+        List<Product> inventory = uow.Products.GetAll();
+
+        // update quantities of products in inventory
+        List<ShoppingCartItem> cartItems = uow.ShoppingCarts.GetProducts(order.ShoppingCartId);
+        foreach (var item in cartItems)
+        {
+            Product prod = inventory.Where(x => x.Id == item.ProductId).FirstOrDefault();
+            prod.Quantity -= item.Quantity;
+            uow.Products.Update(prod);
+        }
+
+        uow.Orders.Delete(1);
+        uow.ShoppingCarts.ClearCart(order.ShoppingCartId);
+
+        UpdateTotal();
+        NavManager.NavigateTo("/checkout");
+    }
 }
