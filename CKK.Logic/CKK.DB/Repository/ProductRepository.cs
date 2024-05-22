@@ -92,8 +92,8 @@ namespace CKK.DB.Repository
             IDbConnection connection = connectionFactory.GetConnection;
             string SQLQuery =
                 "UPDATE Products " +
-                "SET (Price = @Price, Quantity = @Quantity, Name = @Name) " +
-                "WHERE (Id = @Id)";
+                "SET Price = @Price, Quantity = @Quantity, Name = @Name " +
+                "WHERE Id = @Id";
 
             using (connection)
             {

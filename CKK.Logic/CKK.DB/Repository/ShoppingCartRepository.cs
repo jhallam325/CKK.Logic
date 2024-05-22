@@ -27,8 +27,8 @@ namespace CKK.DB.Repository
 
         public int Add(ShoppingCartItem entity)
         {
-            string SQLQuery = "INSERT INTO ShoppingCartItems (Id, ShoppingCartId, ProductId, Quantity) " +
-                "VALUES (@Id, @ShoppingCartId, @ProductId, @Quantity)";
+            string SQLQuery = "INSERT INTO ShoppingCartItems (ShoppingCartId, ProductId, Quantity) " +
+                "VALUES (@ShoppingCartId, @ProductId, @Quantity)";
 
             using (IDbConnection connection = connectionFactory.GetConnection)
             {
@@ -62,12 +62,14 @@ namespace CKK.DB.Repository
                     if (ProductItems != null)
                     {
                         //Product already in cart so update quantity
-                        var test = UpdateAsync(shopitem);
+                        //var test = UpdateAsync(shopitem);
+                        var test = Update(shopitem);
                     }
                     else
                     {
                         //New product for the cart so add it
-                        var test = AddAsync(shopitem);
+                        //var test = AddAsync(shopitem);
+                        var test = Add(shopitem);
                     }
                 }
                 return shopitem;
@@ -110,25 +112,21 @@ namespace CKK.DB.Repository
             }
         }
 
-        public decimal GetTotal(int ShoppingCartId)
+        public decimal GetTotal(int shoppingCartId)
         {
-            // Test this to see if it works compared to the official solution on discord
-            List<ShoppingCartItem> shCartItems = GetProducts(ShoppingCartId);
-            int quantity = shCartItems[0].Quantity;
-
-            int requestedProductId = shCartItems[0].ProductId;
-            decimal price;
-
-
-            IDbConnection connection = connectionFactory.GetConnection;
-            string SQLQuery = "SELECT Price FROM Products WHERE ProductId = @ProductId";
-            using (connection)
+            using (var conn = connectionFactory.GetConnection)
             {
-                connection.Open();
-                price = connection.ExecuteScalar<decimal>(SQLQuery, new { ProductId = requestedProductId });
-            }
+                var items = SqlMapper.Query<ShoppingCartItem>(conn, @"SELECT * FROM ShoppingCartItems WHERE dbo.ShoppingCartItems.ShoppingCartId = @ShoppingCartId", new { ShoppingCartId = shoppingCartId }).ToList();
+                List<decimal> total = new List<decimal>();
+                ProductRepository _productRepository = new ProductRepository(connectionFactory);
 
-            return quantity * price;
+                foreach (var item in items)
+                {
+                    var product = _productRepository.Get(item.ProductId);
+                    total.Add(product.Price * (decimal)item.Quantity);
+                }
+                return total.Sum();
+            }
         }
 
         public void Ordered(int shoppingCartId)
