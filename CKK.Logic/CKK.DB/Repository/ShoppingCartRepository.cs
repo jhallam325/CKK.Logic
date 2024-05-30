@@ -1,17 +1,7 @@
-﻿/*
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-*/
-
-using CKK.DB.Interfaces;
-using CKK.DB.UOW;
+﻿using CKK.DB.Interfaces;
 using CKK.Logic.Models;
 using Dapper;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace CKK.DB.Repository
 {
@@ -27,10 +17,11 @@ namespace CKK.DB.Repository
 
         public int Add(ShoppingCartItem entity)
         {
+            IDbConnection connection = connectionFactory.GetConnection;
             string SQLQuery = "INSERT INTO ShoppingCartItems (ShoppingCartId, ProductId, Quantity) " +
                 "VALUES (@ShoppingCartId, @ProductId, @Quantity)";
 
-            using (IDbConnection connection = connectionFactory.GetConnection)
+            using (connection)
             {
                 connection.Open();
                 int result = connection.Execute(SQLQuery, entity);
@@ -44,7 +35,6 @@ namespace CKK.DB.Repository
             using (var conn = connectionFactory.GetConnection)
             {
                 ProductRepository productRepository = new ProductRepository(connectionFactory);
-                //var item = productRepository.GetByIdAsync(productId).Result;
                 Product item = productRepository.Get(productId);
 
                 // ShoppingCartItem
@@ -62,29 +52,16 @@ namespace CKK.DB.Repository
                     if (ProductItems != null)
                     {
                         //Product already in cart so update quantity
-                        //var test = UpdateAsync(shopitem);
                         var test = Update(shopitem);
                     }
                     else
                     {
                         //New product for the cart so add it
-                        //var test = AddAsync(shopitem);
                         var test = Add(shopitem);
                     }
                 }
                 return shopitem;
             }
-        }
-        
-
-        private object AddAsync(ShoppingCartItem shopitem)
-        {
-            throw new NotImplementedException();
-        }
-
-        private object UpdateAsync(ShoppingCartItem shopitem)
-        {
-            throw new NotImplementedException();
         }
 
         public int ClearCart(int shoppingCartId)
@@ -116,7 +93,9 @@ namespace CKK.DB.Repository
         {
             using (var conn = connectionFactory.GetConnection)
             {
-                var items = SqlMapper.Query<ShoppingCartItem>(conn, @"SELECT * FROM ShoppingCartItems WHERE dbo.ShoppingCartItems.ShoppingCartId = @ShoppingCartId", new { ShoppingCartId = shoppingCartId }).ToList();
+                var items = SqlMapper.Query<ShoppingCartItem>(conn, 
+                    @"SELECT * FROM ShoppingCartItems WHERE dbo.ShoppingCartItems.ShoppingCartId = @ShoppingCartId", 
+                    new { ShoppingCartId = shoppingCartId }).ToList();
                 List<decimal> total = new List<decimal>();
                 ProductRepository _productRepository = new ProductRepository(connectionFactory);
 

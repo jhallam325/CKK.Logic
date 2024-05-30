@@ -1,12 +1,4 @@
-﻿/*
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-*/
-
-using CKK.DB.Interfaces;
+﻿using CKK.DB.Interfaces;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
@@ -23,7 +15,6 @@ namespace CKK.DB.UOW
         private readonly string connectionString = "Data Source = " +
             "(localdb)\\MSSQLLocalDB; Initial Catalog = StructuredProjectDB";
 
-        // Added the property for the ShoppingCartRepository GetProducts method
         public string ConnectionString { get;}
 
         public IDbConnection GetConnection

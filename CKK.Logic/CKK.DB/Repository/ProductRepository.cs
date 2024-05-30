@@ -1,14 +1,4 @@
-﻿
-/*
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-*/
-
-using CKK.DB.Interfaces;
-using CKK.DB.UOW;
+﻿using CKK.DB.Interfaces;
 using CKK.Logic.Models;
 using Dapper;
 using System.Data;
@@ -27,9 +17,11 @@ namespace CKK.DB.Repository
 
         public int Add(Product entity)
         {
+            IDbConnection connection = connectionFactory.GetConnection;
             string SQLQuery = "INSERT INTO Products (Id, Price, Quantity, Name) " +
                 "VALUES (@Id, @Price, @Quantity, @Name)";
-            using (IDbConnection connection = connectionFactory.GetConnection)
+
+            using (connection)
             {
                 connection.Open();
                 int result = connection.Execute(SQLQuery, entity);
@@ -53,6 +45,7 @@ namespace CKK.DB.Repository
         {
             IDbConnection connection = connectionFactory.GetConnection;
             string SQLQuery = "SELECT * FROM Products WHERE Id = @Id";
+
             using (connection)
             {
                 connection.Open();
@@ -100,11 +93,6 @@ namespace CKK.DB.Repository
                 connection.Open();
                 return connection.Execute(SQLQuery, entity);
             }
-        }
-
-        internal object GetByIdAsync(int productId)
-        {
-            throw new NotImplementedException();
         }
     }
 }

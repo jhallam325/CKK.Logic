@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Pictures\coolsnoopy.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CKK.DB\CKK.DB.csproj" />
     <ProjectReference Include="..\CKK.Logic\CKK.Logic.csproj" />
   </ItemGroup>

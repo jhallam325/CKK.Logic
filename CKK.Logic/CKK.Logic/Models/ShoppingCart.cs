@@ -12,21 +12,16 @@ namespace CKK.Logic.Models
         public Customer Customer { get; set; }
         public List<ShoppingCartItem> ShCartItems { get; set; }
 
-        //* ShoppingCart(Customer cust) 
         public ShoppingCart(Customer customer)
         {
             Customer = customer;
         }
 
-        //* GetCustomerId() : int
-        //* Returns the customer's id 
         public int GetCustomerId()
         {
             return Customer.Id;
         }
 
-        //* GetProductById(int id) : ShoppingCartItem
-        //* Returns the cartItem with matching id.
         public ShoppingCartItem? GetProductById(int id)
         {
             foreach (ShoppingCartItem item in ShCartItems)
@@ -39,13 +34,6 @@ namespace CKK.Logic.Models
             return null;
         }
 
-        //* AddProduct(Product prod, int quantity) : ShoppingCartItem
-        //* Checks for valid quantity
-        //* Checks for product and adds quantity if found
-        //* Adds product if new
-        //* Returns the cartItem changed or null
-        //  In the AddProduct method, if the item already exists in the List,
-        //  then you should add the quantity variable of that item and not add a new ShoppingCartItem.
         public ShoppingCartItem? AddProduct(Product product, int quantity)
         {
             // Checks for valid quantity
@@ -79,10 +67,6 @@ namespace CKK.Logic.Models
             return newItem;
         }
 
-        //* RemoveProduct(Product prod, int quantity) : ShoppingCartItem
-        //* Checks for valid quantity
-        //* Checks for product and removes quantity if found
-        //* Returns the product changed or null
         public ShoppingCartItem? RemoveProduct(int id, int quantity)
         {
             if (quantity <= 0)
@@ -113,8 +97,6 @@ namespace CKK.Logic.Models
             }
         }
 
-        //* GetTotal() : decimal
-        //* returns total of all products
         public decimal GetTotal()
         {
             decimal total = 0m;
@@ -124,9 +106,7 @@ namespace CKK.Logic.Models
             }
             return total;
         }
-
-        //* GetProduct(int prodNum) : ShoppingCartItem
-        //* returns the cartItem in the position of prodNum or null
+        
         public ShoppingCartItem? GetProduct(int productNumber)
         {
             foreach (ShoppingCartItem item in ShCartItems)

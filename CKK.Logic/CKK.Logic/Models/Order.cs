@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CKK.Logic.Models
+﻿namespace CKK.Logic.Models
 {
-    // Does this need to be serializable?
     [Serializable]
     public class Order
     {
