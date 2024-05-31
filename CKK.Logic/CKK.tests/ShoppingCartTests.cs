@@ -21,7 +21,7 @@ namespace CKK.tests
 
             shoppingCart.AddProduct(product1);
             shoppingCart.AddProduct(product2, quantity2);
-            //added a comment
+
             // Test the constructor with no quantity parameter
             Assert.Equal(quantity1, shoppingCart.GetProduct(1).GetQuantity());
 
@@ -122,17 +122,5 @@ namespace CKK.tests
 
             Assert.Null(shoppingCart.GetProductById(idNumber + 1));
         }
-
-
-
-        /*
-         * ShoppingCartTests RemoveProduct_ShouldRemoveButReturnEmptyProduct    [FAIL]
-         * ShoppingCartTests RemoveProduct_ShouldRemoveIfQuantityIsNegative     [FAIL]
-         * ShoppingCartTests RemoveProduct_ShouldRemoveEmtpyProduct             [FAIL]
-         * 
-         * ShoppingCartTests FindStoreItemById_ShouldReturnEmptyStoreItem       [FAIL]
-         * 
-         * ShoppingCartTests AddProduct_InvalidArgumentGiven                    [FAIL]
-         */
     }
 }

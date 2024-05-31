@@ -24,8 +24,7 @@ namespace CKK.DB.Repository
             using (connection)
             {
                 connection.Open();
-                int result = connection.Execute(SQLQuery, entity);
-                return result;
+                return connection.Execute(SQLQuery, entity);
             }
         }
 
@@ -49,8 +48,7 @@ namespace CKK.DB.Repository
             using (connection)
             {
                 connection.Open();
-                Product result = connection.QuerySingleOrDefault<Product>(SQLQuery, new { Id = id });
-                return result;
+                return connection.QuerySingleOrDefault<Product>(SQLQuery, new { Id = id });
             }
         }
 

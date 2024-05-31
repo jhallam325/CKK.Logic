@@ -24,23 +24,22 @@ namespace CKK.DB.Repository
             using (connection)
             {
                 connection.Open();
-                int result = connection.Execute(SQLQuery, entity);
-                return result;
+                return connection.Execute(SQLQuery, entity);
             }
         }
 
         // This AddToCart method does not work because the Async methods aren't implimented
         public ShoppingCartItem AddToCart(int shoppingCardId, int productId, int quantity)
         {
-            using (var conn = connectionFactory.GetConnection)
+            IDbConnection connection = connectionFactory.GetConnection;
+            using (connection)
             {
                 ProductRepository productRepository = new ProductRepository(connectionFactory);
                 Product item = productRepository.Get(productId);
 
-                // ShoppingCartItem
-                var ProductItems = GetProducts(shoppingCardId).Find(x => x.ProductId == productId);
+                ShoppingCartItem ProductItems = GetProducts(shoppingCardId).Find(x => x.ProductId == productId);
 
-                var shopitem = new ShoppingCartItem()
+                ShoppingCartItem shopitem = new ShoppingCartItem()
                 {
                     ShoppingCartId = shoppingCardId,
                     ProductId = productId,
@@ -52,12 +51,12 @@ namespace CKK.DB.Repository
                     if (ProductItems != null)
                     {
                         //Product already in cart so update quantity
-                        var test = Update(shopitem);
+                        int test = Update(shopitem);
                     }
                     else
                     {
                         //New product for the cart so add it
-                        var test = Add(shopitem);
+                        int test = Add(shopitem);
                     }
                 }
                 return shopitem;
@@ -81,6 +80,7 @@ namespace CKK.DB.Repository
         {
             IDbConnection connection = connectionFactory.GetConnection;
             string SQLQuery = "SELECT * FROM ShoppingCartItems WHERE ShoppingCartId = @ShoppingCartId";
+
             using (connection)
             {
                 connection.Open();
@@ -91,18 +91,20 @@ namespace CKK.DB.Repository
 
         public decimal GetTotal(int shoppingCartId)
         {
-            using (var conn = connectionFactory.GetConnection)
+            IDbConnection connection = connectionFactory.GetConnection;
+
+            using (connection)
             {
-                var items = SqlMapper.Query<ShoppingCartItem>(conn, 
+                List<ShoppingCartItem> items = SqlMapper.Query<ShoppingCartItem>(connection, 
                     @"SELECT * FROM ShoppingCartItems WHERE dbo.ShoppingCartItems.ShoppingCartId = @ShoppingCartId", 
                     new { ShoppingCartId = shoppingCartId }).ToList();
                 List<decimal> total = new List<decimal>();
-                ProductRepository _productRepository = new ProductRepository(connectionFactory);
+                ProductRepository productRepository = new ProductRepository(connectionFactory);
 
                 foreach (var item in items)
                 {
-                    var product = _productRepository.Get(item.ProductId);
-                    total.Add(product.Price * (decimal)item.Quantity);
+                    Product product = productRepository.Get(item.ProductId);
+                    total.Add(product.Price * item.Quantity);
                 }
                 return total.Sum();
             }
@@ -123,14 +125,14 @@ namespace CKK.DB.Repository
 
         public int Update(ShoppingCartItem entity)
         {
+            IDbConnection connection = connectionFactory.GetConnection;
             string SQLQuery = "UPDATE ShoppingCartItems " +
                 "SET ShoppingCartId = @ShoppingCartId, ProductId = @ProductId, Quantity = @Quantity " +
                 "WHERE ShoppingCartId = @ShoppingCartId AND ProductId = @ProductId";
-            using (var connection = connectionFactory.GetConnection)
+            using (connection)
             {
                 connection.Open();
-                var result = connection.Execute(SQLQuery, entity);
-                return result;
+                return connection.Execute(SQLQuery, entity);
             }
         }
     }

@@ -31,8 +31,7 @@ namespace CKK.DB.Repository
                 connection.Open();
 
                 // This actually queries the database with the above query
-                int result = connection.Execute(SQLQuery, entity);
-                return result;
+                return connection.Execute(SQLQuery, entity);
             }
         }
 
@@ -62,12 +61,13 @@ namespace CKK.DB.Repository
 
         public Order GetById(int id)
         {
-            string sql = $"SELECT * FROM Orders WHERE OrderId = {id}";
-            using (var connection = connectionFactory.GetConnection)
+            IDbConnection connection = connectionFactory.GetConnection;
+            string SQLQuery = $"SELECT * FROM Orders WHERE OrderId = {id}";
+
+            using (connection)
             {
                 connection.Open();
-                var result = connection.QuerySingleOrDefault<Order>(sql);
-                return result;
+                return connection.QuerySingleOrDefault<Order>(SQLQuery);
             }
         }
 
@@ -75,6 +75,7 @@ namespace CKK.DB.Repository
         {
             IDbConnection connection = connectionFactory.GetConnection;
             string SQLQuery = "SELECT * FROM Orders";
+
             using (connection)
             {
                 connection.Open();
@@ -98,7 +99,6 @@ namespace CKK.DB.Repository
         public int Update(Order entity)
         {
             IDbConnection connection = connectionFactory.GetConnection;
-
             string SQLQuery =
                     "UPDATE Orders " +
                     "SET (OrderNumber = @OrderNumber, " +
