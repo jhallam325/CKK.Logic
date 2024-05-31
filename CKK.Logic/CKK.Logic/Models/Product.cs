@@ -23,6 +23,6 @@ namespace CKK.Logic.Models
             }
         }
         public int Quantity { get; set; }
-        public Image Picture { get; set; }
+        public byte[]? Picture { get; set; }
     }
 }

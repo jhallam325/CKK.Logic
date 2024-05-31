@@ -13,7 +13,7 @@
 else
 {
     <div class="text-center">
-        <h1 class="display-4">Shopping Cart!</h1>
+        <h1 class="display-4">Shopping Cart</h1>
     </div>
     <form method="get">
         <input type="hidden" value="@order.OrderId"/>
@@ -21,12 +21,14 @@ else
         <div class="row">
             @foreach (var item in  uow.Products.GetAll())
             {
+                byte[]? tempPhoto = this.GetImage(Convert.ToBase64String(item.Picture));
                 <div class="card" style="width: 18rem; padding: 5px;">
                     <div class="card-body">
                         <h5 class="card-title text-center">@item.Name</h5>
                         <p class="card-text">@item.Price.ToString("c")</p>
                         <p class="card-text">Quantity Available: @item.Quantity</p>
-                        <p class="card-text">Image Place Holder</p>
+                        <img src="tempPhoto" alt="Image Place Holder">
+                        @* <p class="card-img">@item.Picture</p> *@
                         <br/>
                     </div>
                     <div class="card-footer">
@@ -101,5 +103,19 @@ else
 
         UpdateTotal();
         NavManager.NavigateTo("/checkout");
+    }
+
+
+    // This came from the following video :
+    // https://www.youtube.com/watch?v=O07dDXpcDxU
+
+    private byte[] GetImage(string sBase64String)
+    {
+        byte[] bytes = null;
+        if (!string.IsNullOrEmpty(sBase64String))
+        {
+            bytes = Convert.FromBase64String(sBase64String);
+        }
+        return bytes;
     }
 }
