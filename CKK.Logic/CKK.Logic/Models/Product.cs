@@ -1,4 +1,6 @@
-﻿namespace CKK.Logic.Models
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace CKK.Logic.Models
 {
     public class Product
     {
@@ -21,5 +23,6 @@
             }
         }
         public int Quantity { get; set; }
+        public Image Picture { get; set; }
     }
 }
