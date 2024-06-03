@@ -18,8 +18,8 @@ namespace CKK.DB.Repository
         public int Add(Product entity)
         {
             IDbConnection connection = connectionFactory.GetConnection;
-            string SQLQuery = "INSERT INTO Products (Id, Price, Quantity, Name) " +
-                "VALUES (@Id, @Price, @Quantity, @Name)";
+            string SQLQuery = "INSERT INTO Products (Id, Price, Quantity, Name, Picture) " +
+                "VALUES (@Id, @Price, @Quantity, @Name, @Picture)";
 
             using (connection)
             {
@@ -83,7 +83,7 @@ namespace CKK.DB.Repository
             IDbConnection connection = connectionFactory.GetConnection;
             string SQLQuery =
                 "UPDATE Products " +
-                "SET Price = @Price, Quantity = @Quantity, Name = @Name " +
+                "SET Price = @Price, Quantity = @Quantity, Name = @Name, Picture = @Picture " +
                 "WHERE Id = @Id";
 
             using (connection)
