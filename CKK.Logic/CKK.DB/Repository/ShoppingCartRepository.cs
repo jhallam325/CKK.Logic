@@ -28,7 +28,6 @@ namespace CKK.DB.Repository
             }
         }
 
-        // This AddToCart method does not work because the Async methods aren't implimented
         public ShoppingCartItem AddToCart(int shoppingCardId, int productId, int quantity)
         {
             IDbConnection connection = connectionFactory.GetConnection;

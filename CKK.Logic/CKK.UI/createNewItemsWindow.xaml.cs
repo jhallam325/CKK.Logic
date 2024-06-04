@@ -1,6 +1,4 @@
-﻿using CKK.Logic.Interfaces;
-using CKK.Logic.Models;
-using CKK.Persistance.Models;
+﻿using CKK.DB.Interfaces;
 using System.Windows;
 
 namespace CKK.UI
@@ -10,10 +8,10 @@ namespace CKK.UI
     /// </summary>
     public partial class CreateNewItemsWindow : Window
     {
-        FileStore store;
-        public CreateNewItemsWindow(FileStore store)
+        private readonly IConnectionFactory connectionFactory;
+        public CreateNewItemsWindow(IConnectionFactory connection)
         {
-            this.store = store;
+            connectionFactory = connection;
             InitializeComponent();
             
         }
@@ -38,35 +36,35 @@ namespace CKK.UI
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            HomeWindow window = new HomeWindow(store);
+            HomeWindow window = new HomeWindow(connectionFactory);
             window.Show();
             this.Close();
         }
 
         private void viewAllItemsButton_Click(object sender, RoutedEventArgs e)
         {
-            AllItemsWindow window = new AllItemsWindow(store);
+            AllItemsWindow window = new AllItemsWindow(connectionFactory);
             window.Show();
             this.Close();
         }
 
         private void editItemButton_Click(object sender, RoutedEventArgs e)
         {
-            EditItemWindow window = new EditItemWindow(store);
+            EditItemWindow window = new EditItemWindow(connectionFactory);
             window.Show();
             this.Close();
         }
 
         private void removeItemButton_Click(object sender, RoutedEventArgs e)
         {
-            RemoveItemWindow window = new RemoveItemWindow(store);
+            RemoveItemWindow window = new RemoveItemWindow(connectionFactory);
             window.Show();
             this.Close();
         }
 
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow page = new LoginWindow();
+            LoginWindow page = new LoginWindow(connectionFactory);
             page.Show();
             this.Close();
         }

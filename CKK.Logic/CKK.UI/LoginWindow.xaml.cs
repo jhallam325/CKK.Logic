@@ -1,7 +1,4 @@
-﻿using CKK.Logic.Interfaces;
-using CKK.Logic.Models;
-using CKK.Persistance.Models;
-using System.IO;
+﻿using CKK.DB.Interfaces;
 using System.Windows;
 
 namespace CKK.UI
@@ -11,11 +8,10 @@ namespace CKK.UI
     /// </summary>
     public partial class LoginWindow : Window
     {
-        //Store coreysKnickKnacks = new Store();
-        private IStore coreysKnickKnacks;
-        public LoginWindow()
+        private readonly IConnectionFactory connectionFactory;
+        public LoginWindow(IConnectionFactory connection)
         {
-            coreysKnickKnacks = new FileStore();
+            connectionFactory = connection;
             InitializeComponent();
         }
 
@@ -25,7 +21,7 @@ namespace CKK.UI
             // they aren't blank.
             if (userNameTextBox.Text != "" && passwordTextBox.Text != "")
             {
-                HomeWindow page = new HomeWindow(coreysKnickKnacks);
+                HomeWindow page = new HomeWindow(connectionFactory);
                 page.Show();
                 this.Close();
             }

@@ -1,9 +1,5 @@
-﻿using CKK.Logic.Interfaces;
-using CKK.Logic.Models;
-using CKK.Persistance.Models;
+﻿using CKK.DB.Interfaces;
 using System.Windows;
-using System.Windows.Controls;
-using System.Xml.Linq;
 
 namespace CKK.UI
 {
@@ -12,10 +8,10 @@ namespace CKK.UI
     /// </summary>
     public partial class AllItemsWindow : Window
     {
-        FileStore store;
-        public AllItemsWindow(FileStore store)
+        private readonly IConnectionFactory connectionFactory;
+        public AllItemsWindow(IConnectionFactory connection)
         {
-            this.store = store;
+            connectionFactory = connection;
             InitializeComponent();
 
             //*********************************************************
@@ -26,35 +22,35 @@ namespace CKK.UI
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            HomeWindow window = new HomeWindow(store);
+            HomeWindow window = new HomeWindow(connectionFactory);
             window.Show();
             this.Close();
         }
 
         private void createNewItemsButton_Click(object sender, RoutedEventArgs e)
         {
-            CreateNewItemsWindow page = new CreateNewItemsWindow(store);
+            CreateNewItemsWindow page = new CreateNewItemsWindow(connectionFactory);
             page.Show();
             this.Close();
         }
 
         private void editItemsButton_Click(object sender, RoutedEventArgs e)
         {
-            EditItemWindow window = new EditItemWindow(store);
+            EditItemWindow window = new EditItemWindow(connectionFactory);
             window.Show();
             this.Close();
         }
 
         private void removeItemsButton_Click(object sender, RoutedEventArgs e)
         {
-            RemoveItemWindow window = new RemoveItemWindow(store);
+            RemoveItemWindow window = new RemoveItemWindow(connectionFactory);
             window.Show();
             this.Close();
         }
 
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow page = new LoginWindow();
+            LoginWindow page = new LoginWindow(connectionFactory);
             page.Show();
             this.Close();
         }
