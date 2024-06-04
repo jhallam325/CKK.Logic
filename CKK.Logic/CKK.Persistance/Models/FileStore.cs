@@ -1,5 +1,4 @@
 ﻿using CKK.Persistance.Interfaces;
-using CKK.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +13,7 @@ using System.Collections;
 
 namespace CKK.Persistance.Models
 {
-    public class FileStore : IStore, ISavable, ILoadable
+    public class FileStore : ISavable, ILoadable
     {
         // Every Product used to be a StoreItem anad was changed for project deliverable 16
         private int idNumber = 1;

@@ -92,5 +92,81 @@ namespace CKK.DB.Repository
                 return connection.Execute(SQLQuery, entity);
             }
         }
+
+        public List<Product> SortByAsc(string sortValue)
+        {
+            IDbConnection connection = connectionFactory.GetConnection;
+            string SQLQuery;
+
+            if (sortValue == "ID Number")
+            {
+                SQLQuery = "SELECT * FROM Products " +
+                "ORDER BY Id";
+                
+            }
+            else if (sortValue == "Quantity")
+            {
+                SQLQuery = "SELECT * FROM Products " +
+                "ORDER BY Quantity";
+            }
+            else
+            {
+                SQLQuery = "SELECT * FROM Products " +
+                "ORDER BY Price";
+            }
+            
+            using (connection)
+            {
+                connection.Open();
+                List<Product> products = connection.Query<Product>(SQLQuery).ToList();
+                return products;
+            }
+        }
+
+        public List<Product> SortByDesc(string sortValue)
+        {
+            IDbConnection connection = connectionFactory.GetConnection;
+            string SQLQuery;
+
+            if (sortValue == "ID Number")
+            {
+                SQLQuery = "SELECT * FROM Products " +
+                "ORDER BY Id DESC";
+
+            }
+            else if (sortValue == "Quantity")
+            {
+                SQLQuery = "SELECT * FROM Products " +
+                "ORDER BY Quantity DESC";
+            }
+            else
+            {
+                SQLQuery = "SELECT * FROM Products " +
+                "ORDER BY Price DESC";
+            }
+
+            using (connection)
+            {
+                connection.Open();
+                List<Product> products = connection.Query<Product>(SQLQuery).ToList();
+                return products;
+            }
+        }
+
+        public List<Product> SearchFor(string searchTerm)
+        {
+            IDbConnection connection = connectionFactory.GetConnection;
+            string upper = searchTerm.ToUpper();
+            string SQLQuery = $"Select * From Products " +
+                $"WHERE CHARINDEX(UPPER(Name), '{upper}') > 0";
+
+            using (connection)
+            {
+                connection.Open();
+                List<Product> products = connection.Query<Product>(SQLQuery).ToList();
+                return products;
+            }
+        }
+
     }
 }

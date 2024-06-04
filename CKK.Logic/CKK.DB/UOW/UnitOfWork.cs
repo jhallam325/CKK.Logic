@@ -5,11 +5,11 @@ namespace CKK.DB.UOW
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public UnitOfWork(IConnectionFactory Connection)
+        public UnitOfWork(IConnectionFactory connection)
         {
-            Products = new ProductRepository(Connection);
-            Orders = new OrderRepository(Connection);
-            ShoppingCarts = new ShoppingCartRepository(Connection);
+            Products = new ProductRepository(connection);
+            Orders = new OrderRepository(connection);
+            ShoppingCarts = new ShoppingCartRepository(connection);
         }
         public IProductRepository Products { get; private set; }
         public IOrderRepository Orders { get; private set; }

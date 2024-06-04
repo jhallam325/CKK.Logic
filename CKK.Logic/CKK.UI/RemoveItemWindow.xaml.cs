@@ -1,4 +1,5 @@
 ﻿using CKK.DB.Interfaces;
+using CKK.DB.UOW;
 using System.Windows;
 
 namespace CKK.UI
@@ -9,9 +10,12 @@ namespace CKK.UI
     public partial class RemoveItemWindow : Window
     {
         private readonly IConnectionFactory connectionFactory;
-        public RemoveItemWindow(IConnectionFactory connection)
+        private UnitOfWork uow;
+
+        public RemoveItemWindow(IConnectionFactory connection, UnitOfWork uow)
         {
             connectionFactory = connection;
+            this.uow = uow;
             InitializeComponent();
         }
 
@@ -29,35 +33,35 @@ namespace CKK.UI
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            HomeWindow window = new HomeWindow(connectionFactory);
+            HomeWindow window = new HomeWindow(connectionFactory, uow);
             window.Show();
             this.Close();
         }
 
         private void viewAllItemsButton_Click(object sender, RoutedEventArgs e)
         {
-            AllItemsWindow window = new AllItemsWindow(connectionFactory);
+            AllItemsWindow window = new AllItemsWindow(connectionFactory, uow);
             window.Show();
             this.Close();
         }
 
         private void createItemButton_Click(object sender, RoutedEventArgs e)
         {
-            CreateNewItemsWindow window = new CreateNewItemsWindow(connectionFactory);
+            CreateNewItemsWindow window = new CreateNewItemsWindow(connectionFactory, uow);
             window.Show();
             this.Close();
         }
 
         private void editItemButton_Click(object sender, RoutedEventArgs e)
         {
-            EditItemWindow window = new EditItemWindow(connectionFactory);
+            EditItemWindow window = new EditItemWindow(connectionFactory, uow);
             window.Show();
             this.Close();
         }
 
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow page = new LoginWindow(connectionFactory);
+            LoginWindow page = new LoginWindow(connectionFactory, uow);
             page.Show();
             this.Close();
         }

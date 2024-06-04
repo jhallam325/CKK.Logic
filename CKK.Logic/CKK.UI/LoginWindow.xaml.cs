@@ -1,4 +1,5 @@
 ﻿using CKK.DB.Interfaces;
+using CKK.DB.UOW;
 using System.Windows;
 
 namespace CKK.UI
@@ -9,9 +10,18 @@ namespace CKK.UI
     public partial class LoginWindow : Window
     {
         private readonly IConnectionFactory connectionFactory;
-        public LoginWindow(IConnectionFactory connection)
+        private UnitOfWork uow;
+        public LoginWindow(IConnectionFactory connection, UnitOfWork uow)
         {
             connectionFactory = connection;
+            InitializeComponent();
+            this.uow = uow;
+        }
+
+        public LoginWindow()
+        {
+            connectionFactory = new DatabaseConnectionFactory();
+            uow = new UnitOfWork(connectionFactory);
             InitializeComponent();
         }
 
@@ -21,7 +31,7 @@ namespace CKK.UI
             // they aren't blank.
             if (userNameTextBox.Text != "" && passwordTextBox.Text != "")
             {
-                HomeWindow page = new HomeWindow(connectionFactory);
+                HomeWindow page = new HomeWindow(connectionFactory, uow);
                 page.Show();
                 this.Close();
             }

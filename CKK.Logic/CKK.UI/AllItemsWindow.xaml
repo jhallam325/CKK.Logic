@@ -15,10 +15,10 @@
             <!--Background="#24242C" Foreground="White"-->
             <ListView.View>
                 <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Items">
-                    <GridViewColumn Header="ID" Width="250" DisplayMemberBinding="{Binding Path=Product.Id}" />
-                    <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding Path=Product.Name}" />
+                    <GridViewColumn Header="ID" Width="250" DisplayMemberBinding="{Binding Path=Id}" />
+                    <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding Path=Name}" />
                     <GridViewColumn Header="Quantity in Inventory" Width="250" DisplayMemberBinding="{Binding Path=Quantity}" />
-                    <GridViewColumn Header="Price" Width="250" DisplayMemberBinding="{Binding Path=Product.Price}" />
+                    <GridViewColumn Header="Price" Width="250" DisplayMemberBinding="{Binding Path=Price}" />
                 </GridView>
             </ListView.View>
         </ListView>
