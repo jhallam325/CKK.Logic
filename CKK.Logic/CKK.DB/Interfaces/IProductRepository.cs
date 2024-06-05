@@ -8,6 +8,7 @@ namespace CKK.DB.Interfaces
         List<Product> GetByName(string name);
         List<Product> SortByAsc(string sortValue);
         List<Product> SortByDesc(string sortValue);
-        public List<Product> SearchFor(string searchTerm);
+        List<Product> SearchFor(string searchTerm);
+        int GetId(Product entity);
     }
 }

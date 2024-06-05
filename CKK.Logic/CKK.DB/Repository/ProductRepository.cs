@@ -158,13 +158,28 @@ namespace CKK.DB.Repository
             IDbConnection connection = connectionFactory.GetConnection;
             string upper = searchTerm.ToUpper();
             string SQLQuery = $"Select * From Products " +
-                $"WHERE CHARINDEX(UPPER(Name), '{upper}') > 0";
+                $"WHERE Name LIKE '%{upper}%'";
 
             using (connection)
             {
                 connection.Open();
                 List<Product> products = connection.Query<Product>(SQLQuery).ToList();
                 return products;
+            }
+        }
+
+        // Added for the Create New Item UI page. Need to test
+        public int GetId(Product entity)
+        {
+            IDbConnection connection = connectionFactory.GetConnection;
+            string SQLQuery = "SELECT Id FROM Products " +
+                "WHERE Name = @Name, Quantity = @Quantity, Price = @Price, Picture = @Picture";
+
+            using (connection)
+            {
+                connection.Open();
+                List<Product> products = connection.Query<Product>(SQLQuery, entity).ToList();
+                return products[0].Id;
             }
         }
 

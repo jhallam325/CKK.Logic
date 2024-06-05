@@ -24,20 +24,22 @@
         </ListView>
 
         <TextBlock HorizontalAlignment="Left" Margin="115,527,0,0" TextWrapping="Wrap" Text="Sort by:" FontSize="16" Foreground="White" VerticalAlignment="Top" Height="25" Width="62"/>
-        <ComboBox HorizontalAlignment="Left" Margin="190,528,0,0" VerticalAlignment="Top" Width="213" x:Name="sortComboBox" SelectionChanged="sortComboBox_SelectionChanged" SelectedValuePath="Content">
+        <ComboBox HorizontalAlignment="Left" Margin="190,527,0,0" VerticalAlignment="Top" Width="213" x:Name="sortComboBox" SelectionChanged="sortComboBox_SelectionChanged" SelectedValuePath="Content">
             <ComboBoxItem Content="ID Number" x:Name="idNumberCombo" IsSelected="True"></ComboBoxItem>
             <ComboBoxItem Content="Quantity" x:Name="quantityCombo"></ComboBoxItem>
             <ComboBoxItem Content="Price"></ComboBoxItem>
         </ComboBox>
-        
-        <TextBlock HorizontalAlignment="Left" Margin="453,526,0,0" TextWrapping="Wrap" Text="Search by name:" FontSize="16" Foreground="White" VerticalAlignment="Top" Height="25" Width="130"/>
-        <TextBox HorizontalAlignment="Left" Margin="598,528,0,0" TextWrapping="Wrap" Text="ProductName1" VerticalAlignment="Top" Width="153" Height="21" x:Name="searchTextBox"/>
-        <Button Content="Submit" HorizontalAlignment="Left" Margin="768,527,0,0" VerticalAlignment="Top" Width="85" Height="22" x:Name="searchSubmitButton" Click="searchSubmitButton_Click"/>
-        
-        <Button Content="Clear Filter" HorizontalAlignment="Left" Margin="1020,528,0,0" VerticalAlignment="Top" Width="81" x:Name="clearButton" Click="clearButton_Click"/>
 
-        
-        
+        <TextBlock HorizontalAlignment="Left" Margin="569,527,0,0" TextWrapping="Wrap" Text="Search by name:" FontSize="16" Foreground="White" VerticalAlignment="Top" Height="25" Width="130"/>
+        <TextBox HorizontalAlignment="Left" Margin="710,527,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="153" Height="21" x:Name="searchTextBox"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="882,527,0,0" VerticalAlignment="Top" Width="85" Height="22" x:Name="searchSubmitButton" Click="searchSubmitButton_Click"/>
+
+        <CheckBox x:Name="descCheckBox" Content="Descending" Checked="descCheckBox_Checked" Unchecked="descCheckBox_Unchecked" HorizontalAlignment="Left" Margin="420,528,0,0" FontSize="16" Foreground="White" VerticalAlignment="Top" Width="116"  Height="22" VerticalContentAlignment="Center" IsChecked="False"/>
+
+        <Button Content="Clear Filter" HorizontalAlignment="Left" Margin="1020,527,0,0" VerticalAlignment="Top" Width="81" x:Name="clearButton" Click="clearButton_Click"/>
+
+
+
         <Button Content="Home" HorizontalAlignment="Left" Margin="115,568,0,0" VerticalAlignment="Top" x:Name="homeButton" Height="47" Width="150"
             FontSize="16" Foreground="White" Background="#24242C" Click="homeButton_Click"/>
         <Button Content="Create New Item" HorizontalAlignment="Left" Margin="328,568,0,0" VerticalAlignment="Top" x:Name="createNewItemsButton" Height="47" Width="150"
@@ -48,6 +50,7 @@
             FontSize="16" Foreground="White" Background="#24242C" Click="removeItemsButton_Click"/>
         <Button Content="Logout" HorizontalAlignment="Left" Margin="965,568,0,0" VerticalAlignment="Top" x:Name="logoutButton" Height="47" Width="150"
             FontSize="16" Foreground="White" Background="#24242C" Click="logoutButton_Click"/>
+
 
 
 

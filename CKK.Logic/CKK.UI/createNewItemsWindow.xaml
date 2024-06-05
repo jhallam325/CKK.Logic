@@ -10,20 +10,25 @@
         <TextBlock HorizontalAlignment="Center" Margin="0,36,0,0" TextWrapping="Wrap" Text="Corey's Knick Knacks" VerticalAlignment="Top" Foreground="White" FontSize="52"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="Wrap" Text="Create New Item" VerticalAlignment="Top" Foreground="White" FontSize="52"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="209,272,0,0" TextWrapping="Wrap" Text="Product Name" VerticalAlignment="Top" Foreground="White"
+        <TextBlock HorizontalAlignment="Left" Margin="209,231,0,0" TextWrapping="Wrap" Text="Product Name" VerticalAlignment="Top" Foreground="White"
                 FontSize="20" Height="33" Width="142"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,272,0,0" TextWrapping="Wrap" Text="ProductName" VerticalAlignment="Top" Width="476" Height="33" FontSize="20"
+        <TextBox HorizontalAlignment="Center" Margin="0,231,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="476" Height="33" FontSize="20"
                 x:Name="nameTextBox"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="209,324,0,0" TextWrapping="Wrap" Text="Quantity" VerticalAlignment="Top" Foreground="White"
+        <TextBlock HorizontalAlignment="Left" Margin="209,281,0,0" TextWrapping="Wrap" Text="Quantity" VerticalAlignment="Top" Foreground="White"
                 FontSize="20" Height="33" Width="142"/>
-        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="476" Height="33" FontSize="20"
-                x:Name="quantityTextBox" Margin="0,324,0,0"/>
+        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="476" Height="33" FontSize="20"
+                x:Name="quantityTextBox" Margin="0,281,0,0"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="209,372,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Foreground="White"
+        <TextBlock HorizontalAlignment="Left" Margin="209,330,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Foreground="White"
                 FontSize="20" Height="33" Width="142"/>
-        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="6.78" VerticalAlignment="Top" Width="476" Height="33" FontSize="20" Margin="0,372,0,0"
+        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="476" Height="33" FontSize="20" Margin="0,330,0,0"
                 x:Name="priceTextBox"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="209,382,0,0" TextWrapping="Wrap" Text="Picture" VerticalAlignment="Top" Foreground="White"
+                FontSize="20" Height="33" Width="142"/>
+        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="476" Height="33" FontSize="20" Margin="0,382,0,0"
+                x:Name="pictureTextBox"/>
 
         <Button Content="Create Item" HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="createItemButton" Height="63" Width="200"
                 FontSize="25" Foreground="White" Background="#24242C" Margin="0,452,0,0" Click="createItemButton_Click" />
@@ -38,6 +43,7 @@
                 FontSize="16" Foreground="White" Background="#24242C" Click="removeItemButton_Click"/>
         <Button Content="Logout" HorizontalAlignment="Left" Margin="965,568,0,0" VerticalAlignment="Top" x:Name="logoutButton" Height="47" Width="150"
                 FontSize="16" Foreground="White" Background="#24242C" Click="logoutButton_Click"/>
+
 
     </Grid>
 </Window>

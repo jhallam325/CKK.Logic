@@ -64,8 +64,30 @@ namespace CKK.UI
         private void sortComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var temp = (ComboBox) sender;
+            var descCheckBox = GetCheckBox();
+            //var itemListView = GetListView();
 
-            string comboBoxSelection = temp.SelectedValue.ToString();
+            string comboBoxSelection = temp.SelectedValue?.ToString();
+            if ((bool) descCheckBox.IsChecked)
+            {
+                itemListView.ItemsSource = uow.Products.SortByDesc(comboBoxSelection);
+            }
+            else
+            {
+                itemListView.ItemsSource = uow.Products.SortByAsc(comboBoxSelection);
+            }
+
+        }
+
+        private void descCheckBox_Checked(object sender, RoutedEventArgs e) 
+        {
+            //var comboBox = GetComboBox();
+            string comboBoxSelection = sortComboBox.SelectedValue.ToString();
+            itemListView.ItemsSource = uow.Products.SortByDesc(comboBoxSelection);
+        }
+        private void descCheckBox_Unchecked(object sender, RoutedEventArgs e) 
+        {
+            string comboBoxSelection = sortComboBox.SelectedValue.ToString();
             itemListView.ItemsSource = uow.Products.SortByAsc(comboBoxSelection);
         }
 
@@ -76,9 +98,37 @@ namespace CKK.UI
 
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
-            // Removed for testing
-            // itemListView.ItemsSource = store.GetStoreItems();
-            throw new NotImplementedException();
+            itemListView.ItemsSource = uow.Products.GetAll();
+            searchTextBox.Text = string.Empty;
+            descCheckBox.IsChecked = false;
+            sortComboBox.SelectedIndex = 0;
+        }
+
+        private CheckBox GetCheckBox()
+        {
+            var panelContent = (Panel) Content;
+            UIElementCollection panelContentChildren = panelContent.Children;
+            List<FrameworkElement> fremeworkElementList = panelContentChildren.Cast<FrameworkElement>().ToList();
+            var listControl = fremeworkElementList.OfType<Control>();
+            return (CheckBox) listControl.FirstOrDefault(s => s.Name == "descCheckBox") ?? new CheckBox();
+        }
+
+        private ComboBox GetComboBox()
+        {
+            var panelContent = (Panel) Content;
+            UIElementCollection panelContentChildren = panelContent.Children;
+            List<FrameworkElement> fremeworkElementList = panelContentChildren.Cast<FrameworkElement>().ToList();
+            var listControl = fremeworkElementList.OfType<Control>();
+            return (ComboBox) listControl.FirstOrDefault(s => s.Name == "sortComboBox") ?? new ComboBox();
+        }
+
+        private ListView GetListView()
+        {
+            var panelContent = (Panel)this.Content;
+            UIElementCollection panelContentChildren = panelContent.Children;
+            List<FrameworkElement> fremeworkElementList = panelContentChildren.Cast<FrameworkElement>().ToList();
+            var listControl = fremeworkElementList.OfType<Control>();
+            return (ListView) listControl.FirstOrDefault(s => s.Name == "itelListView");
         }
     }
 }
