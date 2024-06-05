@@ -43,6 +43,7 @@
                 FontSize="16" Foreground="White" Background="#24242C" Click="removeItemButton_Click"/>
         <Button Content="Logout" HorizontalAlignment="Left" Margin="965,568,0,0" VerticalAlignment="Top" x:Name="logoutButton" Height="47" Width="150"
                 FontSize="16" Foreground="White" Background="#24242C" Click="logoutButton_Click"/>
+        <Button Content="Browse" HorizontalAlignment="Left" Margin="901,382,0,0" VerticalAlignment="Top" Height="33" Width="115" Click="Button_Click" FontSize="16" Foreground="White" Background="#24242C"/>
 
 
     </Grid>

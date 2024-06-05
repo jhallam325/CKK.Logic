@@ -2,6 +2,8 @@
 using CKK.DB.UOW;
 using System.IO.Packaging;
 using System.Windows;
+using System.Collections.Generic;
+using System.Collections;
 using System.Windows.Controls;
 
 namespace CKK.UI
@@ -128,7 +130,22 @@ namespace CKK.UI
             UIElementCollection panelContentChildren = panelContent.Children;
             List<FrameworkElement> fremeworkElementList = panelContentChildren.Cast<FrameworkElement>().ToList();
             var listControl = fremeworkElementList.OfType<Control>();
-            return (ListView) listControl.FirstOrDefault(s => s.Name == "itelListView");
+            return (ListView) listControl.FirstOrDefault(s => s.Name == "itemListView");
+        }
+
+        private T GetControlObject<T>(string name)
+        {
+            var panelContent = (Panel)Content;
+            UIElementCollection panelContentChildren = panelContent.Children;
+            List<FrameworkElement> frameworkElements = panelContentChildren.Cast<FrameworkElement>().ToList();
+            var frameworkElementsOfControl = frameworkElements.OfType<Control>();
+            var typeWanted = frameworkElementsOfControl.GetType();
+            //if (typeWanted is CheckBox)
+            //{
+            //    return (T)Convert.ChangeType(frameworkElementsOfControl.FirstOrDefault(x => x.Name == name), typeof(T)) 
+            //        ?? new(T) Convert.ChangeType(CheckBox(), typeof(T));
+            //}
+            return (T)Convert.ChangeType(frameworkElementsOfControl.FirstOrDefault(x => x.Name == name), typeof(T));
         }
     }
 }

@@ -35,6 +35,10 @@ namespace CKK.UI
             newProduct.Name = nameTextBox.Text;
             newProduct.Quantity = int.Parse(quantityTextBox.Text);
             newProduct.Price = decimal.Parse(priceTextBox.Text);
+
+            // I have the location of an image, and I need to convert it into a byte[] to assign as the picture variable
+            string fileLocation = pictureTextBox.Text;
+
             newProduct.Picture = null;// I need to convert the image located at the string address into a byte[] to add to the database
 
             //uow.Products.Add(newProduct);
@@ -82,6 +86,27 @@ namespace CKK.UI
             LoginWindow page = new LoginWindow(connectionFactory, uow);
             page.Show();
             this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Create OpenFileDialog 
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension 
+            dialog.DefaultExt = ".jpg";
+            dialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|GIF Files (*.gif)|*.gif";
+
+            // Display OpenFileDialog by calling ShowDialog method 
+            Nullable<bool> result = dialog.ShowDialog();
+
+            // Get the selected file name and display in a TextBox 
+            if (result == true)
+            {
+                // Open document 
+                string filename = dialog.FileName;
+                pictureTextBox.Text = filename;
+            }
         }
     }
 }
