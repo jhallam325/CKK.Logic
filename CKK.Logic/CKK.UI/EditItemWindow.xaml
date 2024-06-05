@@ -10,65 +10,65 @@
         <!-- Heading -->
         <TextBlock HorizontalAlignment="Center" Margin="0,36,0,0" TextWrapping="Wrap" Text="Corey's Knick Knacks" VerticalAlignment="Top" Foreground="White" FontSize="52"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="Wrap" Text="Edit Item" VerticalAlignment="Top" Foreground="White" FontSize="52"/>
-        <Button Content="Submit" HorizontalAlignment="Left" Margin="749,199,0,0" VerticalAlignment="Top" Width="104" Height="33" x:Name="searchSubmitButton" Click="searchSubmitButton_Click" FontSize="16"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="749,199,0,0" VerticalAlignment="Top" Width="110" Height="33" x:Name="searchSubmitButton" Click="searchSubmitButton_Click" FontSize="16"/>
 
 
         <!-- Product ID Search -->
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter a Product ID:" VerticalAlignment="Top" Foreground="White"
                 FontSize="20" Height="33" Width="185" Margin="377,199,0,0"/>
         <TextBox HorizontalAlignment="Left" Margin="562,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
-            x:Name="productIdTextBox" TextChanged="productIdTextBox_TextChanged"/>
-        
-        
+            x:Name="productIdTextBox"/>
+
+
         <!-- Old Values -->
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Old Values" VerticalAlignment="Top" Foreground="White"
-            FontSize="20" Height="33" Width="142" Margin="154,264,0,0"/>
+            FontSize="20" Height="33" Width="142" Margin="154,240,0,0"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Foreground="White"
-            FontSize="20" Height="33" Width="83" Margin="31,304,0,0"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,304,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="316" Height="33" FontSize="20"
+            FontSize="20" Height="33" Width="83" Margin="31,280,0,0"/>
+        <TextBox HorizontalAlignment="Left" Margin="154,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="316" Height="33" FontSize="20"
             x:Name="oldNameTextBox"/>
-        
+
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Quantity" VerticalAlignment="Top" Foreground="White"
-            FontSize="20" Height="33" Width="83" Margin="31,351,0,0"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,351,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
+            FontSize="20" Height="33" Width="83" Margin="31,327,0,0"/>
+        <TextBox HorizontalAlignment="Left" Margin="154,327,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
             x:Name="oldQuantityTextBox"/>
-        
+
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Foreground="White"
-            FontSize="20" Height="33" Width="83" Margin="31,403,0,0"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,403,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
+            FontSize="20" Height="33" Width="83" Margin="31,379,0,0"/>
+        <TextBox HorizontalAlignment="Left" Margin="154,379,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
             x:Name="oldPriceTextBox"/>
-        
+
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Picture" VerticalAlignment="Top" Foreground="White"
-            FontSize="20" Height="33" Width="83" Margin="31,454,0,0"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="154,454,0,0" VerticalAlignment="Top" Width="100" x:Name="oldPictureImage"/>
-        
-        
+            FontSize="20" Height="33" Width="83" Margin="31,430,0,0"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="154,430,0,0" VerticalAlignment="Top" Width="100" x:Name="oldPictureImage"/>
+
+
         <!-- New Values -->
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="New Values" VerticalAlignment="Top" Foreground="White"
-            FontSize="20" Height="33" Width="142" Margin="759,264,0,0"/>
+            FontSize="20" Height="33" Width="142" Margin="759,240,0,0"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Foreground="White"
-            FontSize="20" Height="33" Width="83" Margin="636,304,0,0"/>
-        <TextBox HorizontalAlignment="Left" Margin="759,304,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="316" Height="33" FontSize="20"
+            FontSize="20" Height="33" Width="83" Margin="636,280,0,0"/>
+        <TextBox HorizontalAlignment="Left" Margin="759,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="316" Height="33" FontSize="20"
             x:Name="newNameTextBox"/>
-        
+
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Quantity" VerticalAlignment="Top" Foreground="White"
-            FontSize="20" Height="33" Width="83" Margin="636,351,0,0"/>
-        <TextBox HorizontalAlignment="Left" Margin="759,351,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
+            FontSize="20" Height="33" Width="83" Margin="636,327,0,0"/>
+        <TextBox HorizontalAlignment="Left" Margin="759,327,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
             x:Name="newQuantityTextBox"/>
-        
+
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Foreground="White"
-            FontSize="20" Height="33" Width="83" Margin="636,403,0,0"/>
-        <TextBox HorizontalAlignment="Left" Margin="759,403,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
+            FontSize="20" Height="33" Width="83" Margin="636,379,0,0"/>
+        <TextBox HorizontalAlignment="Left" Margin="759,379,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
             x:Name="newPriceTextBox"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Picture" VerticalAlignment="Top" Foreground="White"
-            FontSize="20" Height="33" Width="83" Margin="636,454,0,0"/>
-        <TextBox HorizontalAlignment="Left" Margin="759,454,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
+            FontSize="20" Height="33" Width="83" Margin="636,430,0,0"/>
+        <TextBox HorizontalAlignment="Left" Margin="759,430,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
             x:Name="newPictureTextBox"/>
-        <Button Content="Browse" HorizontalAlignment="Left" Margin="965,454,0,0" VerticalAlignment="Top" Height="33" Width="110" FontSize="16"/>
-        
+        <Button Content="Browse" HorizontalAlignment="Left" Margin="965,430,0,0" VerticalAlignment="Top" Height="33" Width="110" FontSize="16"/>
+
 
         <!-- Footer -->
         <Button Content="Home" HorizontalAlignment="Left" Margin="115,568,0,0" VerticalAlignment="Top" x:Name="homeButton" Height="47" Width="150"
@@ -81,12 +81,6 @@
             FontSize="16" Foreground="White" Background="#24242C" Click="removeItemButton_Click"/>
         <Button Content="Logout" HorizontalAlignment="Left" Margin="965,568,0,0" VerticalAlignment="Top" x:Name="logoutButton" Height="47" Width="150"
             FontSize="16" Foreground="White" Background="#24242C" Click="logoutButton_Click"/>
-        
-        
-        
-        
-        
-        
-        
+        <Button x:Name="updateButton" Content="Update" HorizontalAlignment="Left" Margin="759,500,0,0" VerticalAlignment="Top" Height="33" Width="110" FontSize="16" Click="updateButton_Click"/>
     </Grid>
 </Window>
