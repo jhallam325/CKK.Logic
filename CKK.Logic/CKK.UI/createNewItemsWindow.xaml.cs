@@ -1,6 +1,7 @@
 ﻿using CKK.DB.Interfaces;
 using CKK.DB.UOW;
 using CKK.Logic.Models;
+using System.IO;
 using System.Windows;
 
 namespace CKK.UI
@@ -23,25 +24,23 @@ namespace CKK.UI
 
         private void createItemButton_Click(object sender, RoutedEventArgs e)
         {
-            //int quantity = int.Parse(quantityTextBox.Text);
-
-            //ShoppingCartItem newProduct = new ShoppingCartItem();
-            //newProduct.Price = decimal.Parse(priceTextBox.Text);
-            //newProduct.Name = nameTextBox.Text;
-
-            //store.AddStoreItem(newProduct, quantity);
-
             Product newProduct = new Product();
             newProduct.Name = nameTextBox.Text;
             newProduct.Quantity = int.Parse(quantityTextBox.Text);
             newProduct.Price = decimal.Parse(priceTextBox.Text);
 
             // I have the location of an image, and I need to convert it into a byte[] to assign as the picture variable
-            string fileLocation = pictureTextBox.Text;
+            string path = pictureTextBox.Text;
+            string fileName = System.IO.Path.GetFileName(path);  //Returns MyImage.jpeg
+            //string fileNameWOExtension = System.IO.Path.GetFileNameWithoutExtension(path); //Returns MyImage
+            //FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-            newProduct.Picture = null;// I need to convert the image located at the string address into a byte[] to add to the database
+            //byte[] stream = File.ReadAllBytes(path);
+            //File.Wr
 
-            //uow.Products.Add(newProduct);
+            newProduct.Picture = File.ReadAllBytes(path); // I need to convert the image located at the string address into a byte[] to add to the database
+
+            uow.Products.Add(newProduct);
 
             Product oldProduct = uow.Products.Get(2);
 
@@ -50,7 +49,7 @@ namespace CKK.UI
                 $"ID: \t {uow.Products.GetId(oldProduct)}\n" +
                 $"Quantity: {newProduct.Quantity}\n" +
                 $"Price: \t {newProduct.Price:C}\n" +
-                $"Picture: \t {pictureTextBox.Text}");
+                $"Picture: \t {fileName}");
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)

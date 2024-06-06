@@ -18,8 +18,8 @@ namespace CKK.DB.Repository
         public int Add(Product entity)
         {
             IDbConnection connection = connectionFactory.GetConnection;
-            string SQLQuery = "INSERT INTO Products (Id, Price, Quantity, Name, Picture) " +
-                "VALUES (@Id, @Price, @Quantity, @Name, @Picture)";
+            string SQLQuery = "INSERT INTO Products (Price, Quantity, Name, Picture) " +
+                "VALUES (@Price, @Quantity, @Name, @Picture)";
 
             using (connection)
             {
@@ -168,7 +168,6 @@ namespace CKK.DB.Repository
             }
         }
 
-        // Added for the Create New Item UI page. Need to test
         public int GetId(Product entity)
         {
             IDbConnection connection = connectionFactory.GetConnection;
