@@ -37,8 +37,6 @@ namespace CKK.UI
 
             uow.Products.Add(newProduct);
 
-            //Product oldProduct = uow.Products.Get(2);
-
             MessageBox.Show($"New item created!\n" +
                 $"Name: \t {newProduct.Name}\n" +
                 //$"ID: \t {uow.Products.GetId(newProduct)}\n" +

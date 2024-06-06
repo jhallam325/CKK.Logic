@@ -49,9 +49,6 @@ namespace CKK.Persistance.Models
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream output;
-
-            //output = new FileStream(Globals.FullPath, FileMode.OpenOrCreate, FileAccess.Write);
-
             
             // If the output file exits, we'll append to it, otherwise create it.
             if (File.Exists(Globals.FullPath))
