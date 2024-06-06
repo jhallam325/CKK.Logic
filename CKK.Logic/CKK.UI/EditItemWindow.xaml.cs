@@ -82,20 +82,16 @@ namespace CKK.UI
             oldNameTextBox.Text = product.Name;
             oldQuantityTextBox.Text = product.Quantity.ToString();
             oldPriceTextBox.Text = product.Price.ToString();
-
-            // How can I display the picture?
-            //oldPictureImage.Source = byteArrayToImage(product.Picture);// as System.Windows.Controls.Image;
             oldPictureImage.Source = LoadImage(product.Picture);
+
+            // Fill the new values so if you make one little change, you dont have to 
+            // change everything
+            newNameTextBox.Text = product.Name;
+            newQuantityTextBox.Text = product.Quantity.ToString();
+            newPriceTextBox.Text = product.Price.ToString();
+            newPictureTextBox.Text = "";
         }
 
-        public Image byteArrayToImage(byte[] bytesArr)
-        {
-            using (MemoryStream memstr = new MemoryStream(bytesArr))
-            {
-                Image img = Image.FromStream(memstr);
-                return img;
-            }
-        }
 
         private static BitmapImage LoadImage(byte[] imageData)
         {
@@ -138,11 +134,55 @@ namespace CKK.UI
             product.Name = newNameTextBox.Text;
             product.Quantity = int.Parse(newQuantityTextBox.Text);
             product.Price = decimal.Parse(newPriceTextBox.Text);
-            //product.Picture = 
+            
+            if (newPictureTextBox.Text == "")
+            {
+                uow.Products.Update(product);
+                MessageBox.Show($"{product.Name} updated successfully");
+            }
+            else
+            {
+                string path = newPictureTextBox.Text;
+                string fileName = System.IO.Path.GetFileName(path);  //Returns MyImage.jpeg
+                product.Picture = File.ReadAllBytes(path);
+                uow.Products.Update(product);
+                MessageBox.Show($"{product.Name} updated successfully");
+            }
 
-            uow.Products.Update(product);
+            // Display the values of the new product into the old values
+            oldNameTextBox.Text = product.Name;
+            oldQuantityTextBox.Text = product.Quantity.ToString();
+            oldPriceTextBox.Text = product.Price.ToString();
+            oldPictureImage.Source = LoadImage(product.Picture);
 
+            // Reset the new values to nothing
+            newNameTextBox.Text = "";
+            newQuantityTextBox.Text = "";
+            newPriceTextBox.Text = "";
+            newPictureTextBox.Text = "";
 
+            searchButtonClicked = false;
+        }
+
+        private void browseButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Create OpenFileDialog 
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension 
+            dialog.DefaultExt = ".jpg";
+            dialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|GIF Files (*.gif)|*.gif";
+
+            // Display OpenFileDialog by calling ShowDialog method 
+            Nullable<bool> result = dialog.ShowDialog();
+
+            // Get the selected file name and display in a TextBox 
+            if (result == true)
+            {
+                // Open document 
+                string filename = dialog.FileName;
+                newPictureTextBox.Text = filename;
+            }
         }
     }
 }

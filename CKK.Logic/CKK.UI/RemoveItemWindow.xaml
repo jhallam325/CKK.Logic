@@ -7,23 +7,30 @@
         mc:Ignorable="d"
         Title="RemoveItem" Height="690" Width="1230">
     <Grid Background="#29375A">
+        <!-- Header -->
         <TextBlock HorizontalAlignment="Center" Margin="0,36,0,0" TextWrapping="Wrap" Text="Corey's Knick Knacks" VerticalAlignment="Top" Foreground="White" FontSize="52"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="Wrap" Text="Remove Item" VerticalAlignment="Top" Foreground="White" FontSize="52"/>
-
+        
+        
+        <!-- Inputs -->
         <TextBlock HorizontalAlignment="Left" Margin="209,272,0,0" TextWrapping="Wrap" Text="Product ID" VerticalAlignment="Top" Foreground="White"
             FontSize="20" Height="33" Width="142"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,272,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="476" Height="33" FontSize="20"
+        <TextBox HorizontalAlignment="Center" Margin="0,272,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="476" Height="33" FontSize="20"
             x:Name="idTextBox"/>
-        
+
         <TextBlock HorizontalAlignment="Left" Margin="209,333,0,0" TextWrapping="Wrap" Text="Quantity" VerticalAlignment="Top" Foreground="White"
             FontSize="20" Height="33" Width="142"/>
-        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="476" Height="33" FontSize="20"
+        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="476" Height="33" FontSize="20"
             x:Name="quantityTextBox" Margin="0,333,0,0"/>
+        
+        <CheckBox x:Name="removeItemCheckBox" Content="Permanently Remove Item From Database" HorizontalAlignment="Left" Margin="390,389,0,0" VerticalAlignment="Top" Height="33" FontSize="20" VerticalContentAlignment="Center" Width="444" Foreground="White" BorderThickness="1,1,1,1" UseLayoutRounding="True"/>
 
 
-        <Button Content="Delete Item" HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="deleteItemButton" Height="63" Width="200"
-            FontSize="25" Foreground="White" Background="#24242C" Margin="0,394,0,0" Click="deleteItemButton_Click"/>
+        <Button Content="Remove Item" HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="removeItemButton" Height="63" Width="200"
+            FontSize="25" Margin="0,470,0,0" Click="removeItemButton_Click"/>
 
+        
+        <!-- Footer -->
         <Button Content="Home" HorizontalAlignment="Left" Margin="115,568,0,0" VerticalAlignment="Top" x:Name="homeButton" Height="47" Width="150"
             FontSize="16" Foreground="White" Background="#24242C" Click="homeButton_Click"/>
         <Button Content="View All Items" HorizontalAlignment="Left" Margin="328,568,0,0" VerticalAlignment="Top" x:Name="viewAllItemsButton" Height="47" Width="150"
@@ -34,5 +41,7 @@
             FontSize="16" Foreground="White" Background="#24242C" Click="editItemButton_Click"/>
         <Button Content="Logout" HorizontalAlignment="Left" Margin="965,568,0,0" VerticalAlignment="Top" x:Name="logoutButton" Height="47" Width="150"
             FontSize="16" Foreground="White" Background="#24242C" Click="logoutButton_Click"/>
+        <TextBlock x:Name="warningTextBlock" HorizontalAlignment="Left" Margin="361,427,0,0" TextWrapping="Wrap" Text="Inventory must be 0 to permanently remove an item from the database" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
+
     </Grid>
 </Window>

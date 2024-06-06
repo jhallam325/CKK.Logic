@@ -55,19 +55,19 @@
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Quantity" VerticalAlignment="Top" Foreground="White"
             FontSize="20" Height="33" Width="83" Margin="636,327,0,0"/>
-        <TextBox HorizontalAlignment="Left" Margin="759,327,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
+        <TextBox HorizontalAlignment="Left" Margin="759,327,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="201" Height="33" FontSize="20"
             x:Name="newQuantityTextBox"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Foreground="White"
             FontSize="20" Height="33" Width="83" Margin="636,379,0,0"/>
-        <TextBox HorizontalAlignment="Left" Margin="759,379,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
+        <TextBox HorizontalAlignment="Left" Margin="759,379,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="201" Height="33" FontSize="20"
             x:Name="newPriceTextBox"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Picture" VerticalAlignment="Top" Foreground="White"
             FontSize="20" Height="33" Width="83" Margin="636,430,0,0"/>
-        <TextBox HorizontalAlignment="Left" Margin="759,430,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155" Height="33" FontSize="20"
+        <TextBox HorizontalAlignment="Left" Margin="759,430,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="201" Height="33" FontSize="20"
             x:Name="newPictureTextBox"/>
-        <Button Content="Browse" HorizontalAlignment="Left" Margin="965,430,0,0" VerticalAlignment="Top" Height="33" Width="110" FontSize="16"/>
+        <Button x:Name="browseButton" Content="Browse" HorizontalAlignment="Left" Margin="965,430,0,0" VerticalAlignment="Top" Height="33" Width="110" FontSize="16" Click="browseButton_Click"/>
 
 
         <!-- Footer -->

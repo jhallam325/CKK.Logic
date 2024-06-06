@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="Home Page" Height="690" Width="1230">
     <Grid Background="#29375A">
+        <!-- Header -->
         <TextBlock HorizontalAlignment="Center" Margin="0,36,0,0" TextWrapping="Wrap" Text="Corey's Knick Knacks" VerticalAlignment="Top" Foreground="White" FontSize="52"/>
+        
+        
+        <!-- Nav Menu -->
         <Button Content="View All Items" HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="viewAllItemsButton" Height="118" Width="378"
             FontSize="45" FontWeight="DemiBold" Foreground="White" Background="#24242C" Click="viewAllItemsButton_Click" Margin="0,189,0,0"/>
         <Button Content="Create New Item" HorizontalAlignment="Left" Margin="136,426,0,0" VerticalAlignment="Top" x:Name="createNewItemsButton" Height="69" Width="220"

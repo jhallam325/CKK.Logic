@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="Login Page" Height="690" Width="1230">
     <Grid Background="#29375A">
+        <!-- Header -->
         <Image x:Name="CubiclesImage" HorizontalAlignment="Center" Height="486" VerticalAlignment="Top" Width="1230" Source="/Images/cubicles.jpg" Stretch="Fill"/>
+        
+        
+        <!-- Body -->
         <TextBlock HorizontalAlignment="Left" Margin="364,512,0,0" TextWrapping="Wrap" Text="User Name" VerticalAlignment="Top" Foreground="White" FontSize="16" RenderTransformOrigin="0.6,2.164"/>
         <TextBox HorizontalAlignment="Left" Margin="477,512,0,0" TextWrapping="Wrap" Text="userName" VerticalAlignment="Top" Width="388" x:Name="userNameTextBox" Height="21"/>
 

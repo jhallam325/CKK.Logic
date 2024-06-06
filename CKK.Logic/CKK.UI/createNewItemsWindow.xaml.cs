@@ -32,21 +32,16 @@ namespace CKK.UI
             // I have the location of an image, and I need to convert it into a byte[] to assign as the picture variable
             string path = pictureTextBox.Text;
             string fileName = System.IO.Path.GetFileName(path);  //Returns MyImage.jpeg
-            //string fileNameWOExtension = System.IO.Path.GetFileNameWithoutExtension(path); //Returns MyImage
-            //FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-            //byte[] stream = File.ReadAllBytes(path);
-            //File.Wr
-
-            newProduct.Picture = File.ReadAllBytes(path); // I need to convert the image located at the string address into a byte[] to add to the database
+            newProduct.Picture = File.ReadAllBytes(path);
 
             uow.Products.Add(newProduct);
 
-            Product oldProduct = uow.Products.Get(2);
+            //Product oldProduct = uow.Products.Get(2);
 
             MessageBox.Show($"New item created!\n" +
                 $"Name: \t {newProduct.Name}\n" +
-                $"ID: \t {uow.Products.GetId(oldProduct)}\n" +
+                //$"ID: \t {uow.Products.GetId(newProduct)}\n" +
                 $"Quantity: {newProduct.Quantity}\n" +
                 $"Price: \t {newProduct.Price:C}\n" +
                 $"Picture: \t {fileName}");

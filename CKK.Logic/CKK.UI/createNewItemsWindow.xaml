@@ -6,10 +6,14 @@
         xmlns:local="clr-namespace:CKK.UI"
         mc:Ignorable="d"
         Title="Create New Items" Height="690" Width="1230">
+    
     <Grid Background="#29375A">
+        <!-- Header -->
         <TextBlock HorizontalAlignment="Center" Margin="0,36,0,0" TextWrapping="Wrap" Text="Corey's Knick Knacks" VerticalAlignment="Top" Foreground="White" FontSize="52"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="Wrap" Text="Create New Item" VerticalAlignment="Top" Foreground="White" FontSize="52"/>
 
+        
+        <!-- New Item Input-->
         <TextBlock HorizontalAlignment="Left" Margin="209,231,0,0" TextWrapping="Wrap" Text="Product Name" VerticalAlignment="Top" Foreground="White"
                 FontSize="20" Height="33" Width="142"/>
         <TextBox HorizontalAlignment="Center" Margin="0,231,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="476" Height="33" FontSize="20"
@@ -33,6 +37,8 @@
         <Button Content="Create Item" HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="createItemButton" Height="63" Width="200"
                 FontSize="25" Foreground="White" Background="#24242C" Margin="0,452,0,0" Click="createItemButton_Click" />
 
+        
+        <!-- Footer -->
         <Button Content="Home" HorizontalAlignment="Left" Margin="115,568,0,0" VerticalAlignment="Top" x:Name="homeButton" Height="47" Width="150"
                 FontSize="16" Foreground="White" Background="#24242C" Click="homeButton_Click"/>
         <Button Content="View All Items" HorizontalAlignment="Left" Margin="328,568,0,0" VerticalAlignment="Top" x:Name="viewAllItemsButton" Height="47" Width="150"
@@ -44,7 +50,6 @@
         <Button Content="Logout" HorizontalAlignment="Left" Margin="965,568,0,0" VerticalAlignment="Top" x:Name="logoutButton" Height="47" Width="150"
                 FontSize="16" Foreground="White" Background="#24242C" Click="logoutButton_Click"/>
         <Button Content="Browse" HorizontalAlignment="Left" Margin="901,382,0,0" VerticalAlignment="Top" Height="33" Width="115" Click="Button_Click" FontSize="16"/>
-
 
     </Grid>
 </Window>

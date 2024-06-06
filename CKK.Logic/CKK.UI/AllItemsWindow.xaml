@@ -6,11 +6,14 @@
         xmlns:local="clr-namespace:CKK.UI"
         mc:Ignorable="d"
         Title="All Items" Height="690" Width="1230">
+    
     <Grid Background="#29375A">
+        <!-- Header -->
         <TextBlock HorizontalAlignment="Center" Margin="0,36,0,0" TextWrapping="Wrap" Text="Corey's Knick Knacks" VerticalAlignment="Top" Foreground="White" FontSize="52"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="Wrap" Text="All Items" VerticalAlignment="Top" Foreground="White" FontSize="52"/>
 
-
+        
+        <!-- Display window -->
         <ListView HorizontalAlignment="Center" Width="1000" Height="300"  Margin="0,206,0,168" ScrollViewer.HorizontalScrollBarVisibility="Auto" x:Name="itemListView">
             <!--Background="#24242C" Foreground="White"-->
             <ListView.View>
@@ -22,7 +25,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
+        
+        
+        <!-- Search and Sort Features-->
         <TextBlock HorizontalAlignment="Left" Margin="115,527,0,0" TextWrapping="Wrap" Text="Sort by:" FontSize="16" Foreground="White" VerticalAlignment="Top" Height="25" Width="62"/>
         <ComboBox HorizontalAlignment="Left" Margin="190,527,0,0" VerticalAlignment="Top" Width="213" x:Name="sortComboBox" SelectionChanged="sortComboBox_SelectionChanged" SelectedValuePath="Content">
             <ComboBoxItem Content="ID Number" x:Name="idNumberCombo" IsSelected="True"></ComboBoxItem>
@@ -38,8 +43,8 @@
 
         <Button Content="Clear Filter" HorizontalAlignment="Left" Margin="1020,527,0,0" VerticalAlignment="Top" Width="81" x:Name="clearButton" Click="clearButton_Click"/>
 
-
-
+        
+        <!-- Footer -->
         <Button Content="Home" HorizontalAlignment="Left" Margin="115,568,0,0" VerticalAlignment="Top" x:Name="homeButton" Height="47" Width="150"
             FontSize="16" Foreground="White" Background="#24242C" Click="homeButton_Click"/>
         <Button Content="Create New Item" HorizontalAlignment="Left" Margin="328,568,0,0" VerticalAlignment="Top" x:Name="createNewItemsButton" Height="47" Width="150"
@@ -50,11 +55,7 @@
             FontSize="16" Foreground="White" Background="#24242C" Click="removeItemsButton_Click"/>
         <Button Content="Logout" HorizontalAlignment="Left" Margin="965,568,0,0" VerticalAlignment="Top" x:Name="logoutButton" Height="47" Width="150"
             FontSize="16" Foreground="White" Background="#24242C" Click="logoutButton_Click"/>
-
-
-
-
-
+        
     </Grid>
 
 </Window>

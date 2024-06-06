@@ -171,14 +171,14 @@ namespace CKK.DB.Repository
         public int GetId(Product entity)
         {
             IDbConnection connection = connectionFactory.GetConnection;
-            string SQLQuery = "SELECT Id FROM Products " +
+            string SQLQuery = "SELECT * FROM Products " +
                 "WHERE Name = @Name, Quantity = @Quantity, Price = @Price, Picture = @Picture";
 
             using (connection)
             {
                 connection.Open();
-                List<Product> products = connection.Query<Product>(SQLQuery, entity).ToList();
-                return products[0].Id;
+                Product product = connection.QuerySingleOrDefault<Product>(SQLQuery, entity);
+                return product.Id;
             }
         }
 
