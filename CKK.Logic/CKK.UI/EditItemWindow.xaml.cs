@@ -171,7 +171,7 @@ namespace CKK.UI
 
             // Set filter for file extension and default file extension 
             dialog.DefaultExt = ".jpg";
-            dialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|GIF Files (*.gif)|*.gif";
+            dialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|GIF Files (*.gif)|*.gif|WEBP Files (*.webp)|*.webp";
 
             // Display OpenFileDialog by calling ShowDialog method 
             Nullable<bool> result = dialog.ShowDialog();
